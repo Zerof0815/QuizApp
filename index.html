@@ -22,7 +22,7 @@
 
     <script src="script.js"></script>
   </head>
-  <body>
+  <body onload="init()">
     <nav class="navbar bg-body-tertiary">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Quiz App</a>
@@ -31,23 +31,47 @@
     <div class="container">
       <div class="card quiz-card">
         <img src="img/quiz-5595288_1280.jpg" class="card-img-top" alt="..." />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <div class="card mb-2">
-            <div class="card-body">Antwort</div>
+        <div class="px-2">
+          <div class="progress-bar" id="progress-container">
+            <div id="progress-bar"></div>
           </div>
-          <div class="card mb-2">
-            <div class="card-body">Antwort</div>
+        </div>
+        <button
+          onclick="restart()"
+          id="neustart"
+          type="button"
+          class="btn btn-primary d-none"
+        >
+          Neustart
+        </button>
+        <div id="card-body" class="card-body">
+          <h5 class="card-title" id="current-question">Frage</h5>
+          <div class="card quiz-answer-card mb-2" onclick="answer('answer_1')">
+            <div class="card-body" id="answer_1"></div>
           </div>
-          <div class="card mb-2">
-            <div class="card-body">Antwort</div>
+          <div class="card quiz-answer-card mb-2" onclick="answer('answer_2')">
+            <div class="card-body" id="answer_2"></div>
           </div>
-          <div class="card mb-2">
-            <div class="card-body">Antwort</div>
+          <div class="card quiz-answer-card mb-2" onclick="answer('answer_3')">
+            <div class="card-body" id="answer_3"></div>
+          </div>
+          <div class="card quiz-answer-card mb-2" onclick="answer('answer_4')">
+            <div class="card-body" id="answer_4"></div>
           </div>
           <div class="question-footer">
-            <div><b>1</b> von <b>5</b> Fragen</div>
-            <button type="button" class="btn btn-primary">Primary</button>
+            <div>
+              <b id="current-question-id">1</b> von
+              <b id="max-questions">5</b> Fragen
+            </div>
+            <button
+              onclick="nextQuestion()"
+              id="button-next-question"
+              type="button"
+              class="btn btn-primary"
+              disabled
+            >
+              Nächste Frage
+            </button>
           </div>
         </div>
       </div>
